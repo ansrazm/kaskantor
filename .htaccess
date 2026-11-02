@@ -1,0 +1,8 @@
+# Dipakai jika hosting tidak bisa mengarahkan document root ke folder public/.
+# Semua request diteruskan ke public/, sedangkan app/, system/, writable/ tidak bisa diakses langsung.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
